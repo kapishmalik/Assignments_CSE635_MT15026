@@ -1,0 +1,10 @@
+<resources>
+   //App Name
+    <string name="app_name">PCSMA HW MT15026</string>
+
+   // Main Activity
+    <string name="SensorReading">Accelerometer Data </string>
+    <string name="Start">Start</string>
+    <string name="Stop">Stop</string>
+    <string name="Send">Send</string>
+</resources>
