@@ -21,6 +21,7 @@ File Name saved at client side : AccelerometerDataClientCopy.csv
 
 File Name saved at Server side : AccelerometerDataServerCopy.csv
 
-Port No used : 8097
+Port No used : 8097 (hard coded at server end and in app, it will ask you 
+                     port no on pressing send button) 
 
 -----------------------------------------------------------------------------
