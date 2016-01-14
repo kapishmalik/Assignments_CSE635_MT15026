@@ -25,6 +25,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -223,8 +225,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            long actualTime = event.timestamp;
-            if (actualTime - lastUpdate < 400) {
+            long actualTime = System.currentTimeMillis();
+            if (actualTime - lastUpdate < 1000) {
                 return;
             }
             // Collecting Sensor Data if Delay is more than 400ms
@@ -232,13 +234,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float x      = data[0]     ;
             float y      = data[1]     ;
             float z      = data[2]     ;
+
+            //timestamp
+            Timestamp timestamp = new Timestamp(actualTime);
+
             xAxisValue   = "X: "+x;
             yAxisValue   = "Y: "+y;
             zAxisValue   = "Z: "+z;
             xAxisTextView.setText(xAxisValue);
             yAxisTextView.setText(yAxisValue);
             zAxisTextView.setText(zAxisValue);
-            csvData=actualTime+" ,"+x+" ,"+y+" ,"+z+"\n";
+            csvData=timestamp+" ,"+x+" ,"+y+" ,"+z+"\n";
             byte[] writeData = csvData.getBytes();
             try {
               //  Log.i("INFO","I will write in file"+csvData);
